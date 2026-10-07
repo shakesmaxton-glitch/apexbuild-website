@@ -19,10 +19,10 @@ if (contactButton) {
     });
 });
 // Contact form handling
-const contactForm = document.querySelector("#contactForm");;
+const contactForm = document.querySelector("#contactForm");
 
 if (contactForm) {
-    contactForm.addEventListener("submit", function(event) {
+    contactForm.addEventListener("submit", async function(event) {
         event.preventDefault();
 
         const name = document.querySelector("#name").value.trim();
@@ -34,11 +34,33 @@ if (contactForm) {
             return;
         }
 
-        alert(
-            "Thank you, " + name +
-            "! Your message has been received. We will contact you soon."
-        );
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message
+                })
+            });
 
-        contactForm.reset();
+            const result = await response.json();
+
+            if (!response.ok) {
+                alert(result.error || "Something went wrong.");
+                return;
+            }
+
+            alert("Thank you, " + name + "! Your message has been received.");
+
+            contactForm.reset();
+
+        } catch (error) {
+            alert("Unable to send your message right now. Please try again.");
+            console.error(error);
+        }
     });
 }
