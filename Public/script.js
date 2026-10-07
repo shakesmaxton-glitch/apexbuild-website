@@ -19,7 +19,7 @@ if (contactButton) {
     });
 });
 // Contact form handling
-const contactForm = document.querySelector(".contact-form");
+const contactForm = document.querySelector("#contactForm");;
 
 if (contactForm) {
     contactForm.addEventListener("submit", function(event) {
