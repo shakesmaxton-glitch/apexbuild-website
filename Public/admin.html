@@ -7,6 +7,8 @@
     <title>ApexBuild Admin</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -19,16 +21,61 @@
 
     <main class="section">
 
-        <p class="section-label">ADMIN DASHBOARD</p>
+        <div id="loginSection">
 
-        <h1>Contact Messages</h1>
+            <p class="section-label">ADMIN LOGIN</p>
 
-        <p class="section-intro">
-            Manage messages submitted through the ApexBuild website.
-        </p>
+            <h1>Sign In</h1>
 
-        <div id="messages">
-            <p>Loading messages...</p>
+            <p class="section-intro">
+                Sign in to manage customer messages.
+            </p>
+
+            <form id="loginForm" class="contact-form">
+
+                <label for="email">Email Address</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Admin email"
+                    required
+                >
+
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button type="submit" class="button">
+                    Sign In
+                </button>
+
+                <p id="loginMessage"></p>
+
+            </form>
+
+        </div>
+
+
+        <div id="dashboardSection" style="display: none;">
+
+            <p class="section-label">ADMIN DASHBOARD</p>
+
+            <h1>Contact Messages</h1>
+
+            <button id="logoutButton" class="button">
+                Sign Out
+            </button>
+
+            <div id="messages">
+                <p>Loading messages...</p>
+            </div>
+
         </div>
 
     </main>
@@ -36,6 +83,8 @@
     <footer>
         <p>© 2026 ApexBuild Construction</p>
     </footer>
+
+    <script src="admin.js"></script>
 
 </body>
 </html>
