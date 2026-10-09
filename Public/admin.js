@@ -54,3 +54,4 @@ logoutButton.addEventListener("click", async function() {
 });
 
 checkLogin();
+<!-- Admin page deployment check -->
