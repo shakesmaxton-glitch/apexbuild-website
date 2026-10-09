@@ -17,7 +17,7 @@ if (contactButton) {
     contactButton.addEventListener("click", () => {
         console.log("Customer clicked the contact button.");
     });
-});
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     const contactForm = document.querySelector("#contactForm");
