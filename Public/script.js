@@ -23,6 +23,7 @@ const contactForm = document.querySelector("#contactForm");
 
 if (contactForm) {
     contactForm.addEventListener("submit", async function(event) {
+        alert("Form handler is running");
         event.preventDefault();
 
         const name = document.querySelector("#name").value.trim();
