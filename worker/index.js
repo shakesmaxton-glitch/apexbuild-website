@@ -63,7 +63,11 @@ try {
                 });
 
             } catch (error) {
-    console.error("Contact form error:", error);
+    console.error(
+    "Contact form error details:",
+    error?.message,
+    error?.stack
+);
 
     return Response.json(
         { error: "The server could not process your request. Please try again." },
