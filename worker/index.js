@@ -53,14 +53,13 @@ export default {
                 });
 
             } catch (error) {
-                console.error("Contact form error:", error);
+    console.error("Contact form error:", error);
 
-                return Response.json(
-                    { error: "Invalid request." },
-                    { status: 400 }
-                );
+    return Response.json(
+        { error: "The server could not process your request. Please try again." },
+        { status: 500 }
+    );
             }
-        }
 
         // Serve the website
         return env.ASSETS.fetch(request);
