@@ -2,7 +2,10 @@
 export default {
     async fetch(request, env) {
         const url = new URL(request.url);
-
+console.log("Supabase bindings check:", {
+    urlPresent: Boolean(env.SUPABASE_URL),
+    keyPresent: Boolean(env.SUPABASE_KEY)
+});
         if (
             url.pathname === "/api/contact" &&
             request.method === "POST"
