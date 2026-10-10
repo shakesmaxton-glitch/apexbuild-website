@@ -42,32 +42,45 @@ try {
                         body: JSON.stringify({
                             name: name,
                             email: email,
-                            message: message
-                        })
-                    }
-                );
+                            
+                    message: message
+                })
+            }
+        );
 
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    console.error("Supabase error:", errorText);
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Supabase error:", errorText);
 
-                    return Response.json(
-                        { error: "Unable to save your message." },
-                        { status: 500 }
-                    );
-                }
+            return Response.json(
+                { error: "Unable to save your message." },
+                { status: 500 }
+            );
+        }
 
-                return Response.json({
-                    success: true,
-                    message: "Message received successfully."
-                });
+        return Response.json({
+            success: true,
+            message: "Message received successfully."
+        });
 
-            } catch (error) {
-    console.error(
-    "Contact form error details:",
-    error?.message,
-    error?.stack
-);
+    } catch (error) {
+        console.error(
+            "Contact form error details:",
+            error?.message,
+            error?.stack
+        );
+
+        return Response.json(
+            { error: "The server could not process your request. Please try again." },
+            { status: 500 }
+        );
+    }
+}
+
+// Serve the website
+return env.ASSETS.fetch(request);
+    }
+};
 
     return Response.json(
         { error: "The server could not process your request. Please try again." },
