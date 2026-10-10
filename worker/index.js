@@ -5,7 +5,17 @@ export default {
         // Handle contact form
         if (url.pathname === "/api/contact" && request.method === "POST") {
             try {
-                const data = await request.json();
+                let data;
+
+try {
+    data = await request.json();
+} catch (error) {
+    console.error("JSON parsing failed:", error?.stack || error);
+    return Response.json(
+        { error: "The request body is not valid JSON." },
+        { status: 400 }
+    );
+}
 
                 const name = String(data.name || "").trim();
                 const email = String(data.email || "").trim();
