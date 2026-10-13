@@ -2,6 +2,12 @@
 export default {
     async fetch(request, env) {
         const url = new URL(request.url);
+        if (url.pathname === "/api/contact") {
+    return Response.json({
+        urlPresent: Boolean(env.SUPABASE_URL),
+        keyPresent: Boolean(env.SUPABASE_KEY)
+    });
+        }
         console.log("Supabase check:", {
     urlPresent: Boolean(env.SUPABASE_URL),
     keyPresent: Boolean(env.SUPABASE_KEY)
