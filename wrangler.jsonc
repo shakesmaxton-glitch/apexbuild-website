@@ -6,6 +6,9 @@
   "observability": {
     "enabled": true
   },
+  "vars": {
+    "SUPABASE_URL": "https://bglqdgjhubxisgiugbio.supabase.co"
+  },
   "assets": {
     "directory": "./Public",
     "binding": "ASSETS"
